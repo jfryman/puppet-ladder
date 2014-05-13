@@ -1,0 +1,1 @@
+class frymanet::base::platform::linux::debian {}

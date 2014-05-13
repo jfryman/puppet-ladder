@@ -1,0 +1,10 @@
+---
+:base: frymanet::base
+:hierarchy:
+  - platform/%{::virtual}
+  - platform/%{::productname}
+  - platform/%{::operatingsystem}
+  - platform/%{::operatingsystem}/%{::lsbdistcodename}
+  - platform/%{::cloud}
+  - platform/%{::datacenter}
+  - platform/%{::datacenter}/%{::operatingsystem}
