@@ -6,5 +6,3 @@ license 'Apache License Version 2.0'
 summary 'Puppet Ladders'
 description 'This module can be used for class autoloading based on facts'
 project_page 'http://github.com/jfryman/puppet-ladder'
-
-dependency 'puppetlabs/stdlib', '>= 0.1.6'
