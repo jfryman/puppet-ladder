@@ -12,7 +12,7 @@ module Puppet::Parser::Functions
 
     if File.exists? ladder_config
       ladder = YAML.load_file ladder_config
-      ladder_base = lader.has_key?[:base] ? ladder[:base].gsub(/::/, '/') : '/'
+      ladder_base = ladder.has_key?[:base] ? ladder[:base].gsub(/::/, '/') : '/'
 
       ladder[:hierarchy].each do |rung|
         rung_lookup   = "#{ladder_base}/#{function_expand_rung([rung])}".split('/')
