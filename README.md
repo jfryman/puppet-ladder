@@ -9,31 +9,32 @@ In today's Puppet world, everything is a hierarchy. Hiera is a hierarchy. The DA
 
 It's possible to wire this up with good design and to keep things in isolated classes, but who wants to do that? Most people just rant that this is simply unacceptable.
 
-Enter: Ladder!
+Enter: Ladders!
 
 ## How does it work?
 
-- Create a stack in $PUPPET_ROOT/stacks. Give it some load paths based on facts you want class autoloading to happen on.
+- Create a stack in $manifestdir/ladders. Give it some load paths based on facts you want class autoloading to happen on.
 
 ```yaml
+# $manifestdir/ladders/platform.yaml
 ---
-:base: frimante::platform
+:base: platform
 :hierarchy:
-  - platform/%{::virtual}
-  - platform/%{::productname}
-  - platform/%{::operatingsystem}
-  - platform/%{::operatingsystem}/%{::lsbdistcodename}
-  - platform/%{::cloud}
-  - platform/%{::datacenter}
-  - platform/%{::datacenter}/%{::operatingsystem}
-  - platform/%{::datacenter}/%{::operatingsystem}/%{::lsbdistcodename}
+  - %{::virtual}
+  - %{::productname}
+  - %{::operatingsystem}
+  - %{::operatingsystem}/%{::lsbdistcodename}
+  - %{::cloud}
+  - %{::datacenter}
+  - %{::datacenter}/%{::operatingsystem}
+  - %{::datacenter}/%{::operatingsystem}/%{::lsbdistcodename}
 
 ```
 
 - Load up the stack.
 
 ```puppet
-  ladder { ‘frimante::platform’: }
+  ladder { ‘platform’: }
 ```
 
 - Bask in all the goodness that is Ladder. (and :moneybag:s)
