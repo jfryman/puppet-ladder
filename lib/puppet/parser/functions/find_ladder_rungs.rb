@@ -8,7 +8,7 @@ module Puppet::Parser::Functions
     load_ladder   = args[0]
     module_path   = File.expand_path('..', Puppet::Module.find('ladder', compiler.environment.to_s).path)
     ladders_path  = File.expand_path('../ladders', module_path)
-    ladder_config  = "#{stacks_path}/#{load_stack}.yaml"
+    ladder_config  = "#{ladders_path}/#{load_ladder}.yaml"
     manifests     = []
 
     if File.exists? ladder_config
