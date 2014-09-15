@@ -4,10 +4,11 @@ module Puppet::Parser::Functions
 
   newfunction(:find_ladder_rungs, :type => :rvalue) do |args|
     Puppet::Parser::Functions.autoloader.loadall
-
+    
     load_ladder   = args[0]
-    ladders_path  = "#{Puppet[:manifestdir]}/ladders"
-    ladder_config = "#{ladders_path}/#{load_ladder}.yaml"
+    module_path   = File.expand_path('..', Puppet::Module.find('ladder', compiler.environment.to_s).path)
+    ladders_path  = File.expand_path('../ladders', module_path)
+    ladder_config  = "#{stacks_path}/#{load_stack}.yaml"
     manifests     = []
 
     if File.exists? ladder_config
